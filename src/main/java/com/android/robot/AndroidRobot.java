@@ -2366,7 +2366,7 @@ public class AndroidRobot {
         itemFPSInfo.setEnabled(boolFPSInfo);
         itemMonkeyTest.setEnabled(boolMonkeyTest);
         itemLogcat.setEnabled(boolLogcat);
-        itemNodesView.setEnabled(boolNodesView);
+//        itemNodesView.setEnabled(boolNodesView);
     }
 
     public static void enableRecord(boolean value) {
@@ -2710,7 +2710,7 @@ public class AndroidRobot {
         final CTabItem tabItem = new CTabItem(tabContent, SWT.Close | SWT.MULTI | SWT.V_SCROLL);
         taskRowList = new ArrayList();
         tabItem.setText(name);
-        tabItem.setImage(new Image(display, ".\\icons\\config.png"));
+        tabItem.setImage(new Image(display, ClassLoader.getSystemResource("icons/config.png").getPath()));
         tabItem.setData(name, name);
         htTab.put(name, tabItem);
 
