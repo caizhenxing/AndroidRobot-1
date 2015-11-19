@@ -1,5 +1,6 @@
 package com.android.util;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -77,9 +78,11 @@ public class PropertiesUtil {
 	    public static String getValue(String fileName, String key)
 	    {
 	        try {
+	        	String userPath = System.getProperty("user.dir");
+	        	System.out.println("=============================" + userPath);
 	            String value = "";
 	            Properties properties = new Properties();
-	            FileInputStream inputFile = new FileInputStream(fileName);
+	            FileInputStream inputFile = new FileInputStream(userPath + File.separator + fileName);
 	            properties.load(inputFile);
 	            inputFile.close();
 	            

@@ -15,6 +15,7 @@
  */
 package com.android.ide;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -39,26 +40,17 @@ public class ReadProperties {
 		if (key == null) {
 			try {
 				FileInputStream input = 
-						new FileInputStream(".\\keywords.properties");
+						new FileInputStream(System.getProperty("user.dir") + 
+								File.separator + "keywords.properties");
 				pro.load(input);
 				input.close();
-				// 获取所以属性名
+				// 锟斤拷取锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷
 				key = new String[60];
 				Enumeration enu2 = pro.propertyNames();
 				while (enu2.hasMoreElements()) {
 					key[i] = (String) enu2.nextElement();
-					// System.out.println(key[i]);
 					i++;
 				}
-
-				// 获取所有属性值
-				// key =new String[60];
-				// Enumeration enu = pro.elements();
-				// while (enu.hasMoreElements()) {
-				// key[i] = (String) enu.nextElement();
-				// System.out.println(key[i]);
-				// i++;
-				// }
 
 			} catch (Exception e) {
 				System.err.println("Load \"keywords.properties\" failed!");

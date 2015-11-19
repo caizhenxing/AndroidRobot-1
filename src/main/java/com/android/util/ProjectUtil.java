@@ -55,40 +55,6 @@ public class ProjectUtil {
     	}
 	}
 	
-	public static void main(String[] args){
-		/*
-		DomParse dom = new DomParse();
-		Hashtable<String,String> ht = new Hashtable();
-		ht.put("start", "11:23");
-		ht.put("end", "11:23");
-		Element root = dom.createNode("Test");
-		Element handset_1 = dom.createNode(root,"S0123456789ABCDEF");
-		dom.createNode(handset_1, ht, "test1.py","PASS");
-		
-		for(int i=0;i<500000;i++){
-			Element handset_2 = dom.createNode(root,"T0123456789ABCDEF");
-			dom.createNode(handset_2, ht, "test1.py","PASS");
-		}
-		System.out.println("save to output.xml");
-		dom.saveToFile("output.xml");
-		System.out.println("...........Done..........");
-		
-		//Element handset_3 = dom.createNode(root,"A0123456789ABCDEF");
-		
-		dom.createNode(handset_1, ht, "test1.py","PASS");
-		dom.saveToFile("output.xml");
-		handset_1.appendChild(dom.createNode(handset_1, ht, "test1.py","PASS"));
-		dom.saveToFile("output.xml");
-		*/
-		
-		try {
-			removeHandset("D:\\eclipse-SDK-3.7-win32\\workspace\\AndroidRobot\\workspace\\Samsung.androidrobot","11111111");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	}
-	
 	public static Vector<String> getHandsets(String file)throws Exception{
 		Vector<String> vec = new Vector();
 		DocumentBuilderFactory domfac=DocumentBuilderFactory.newInstance();
@@ -216,23 +182,20 @@ public class ProjectUtil {
 		
 		TreeItem root = new TreeItem(tree, SWT.NONE);
 		root.setText(project);
-		//System.out.println(vecProject.get(i).getName());
-		root.setImage(new Image(display, ".\\icons\\project.png"));
+		root.setImage(new Image(display, ClassLoader.getSystemResource("icons/project.png").getPath()));
 		
 		TreeItem devices = new TreeItem(root, SWT.NONE);
 		devices.setText("Devices");
-		devices.setImage(new Image(display, ".\\icons\\devices.png"));
+		devices.setImage(new Image(display, ClassLoader.getSystemResource("icons/devices.png").getPath()));
 		
 		for(int i =0;i<vecDevices.size();i++){
-			//System.out.println(vecDevices.get(i));
 			TreeItem column = new TreeItem(devices, SWT.NONE);
 			column.setText(vecDevices.get(i).name);
 			column.setData("index",vecDevices.get(i).index);
 			column.setData("sn",vecDevices.get(i).sn);
 			column.setData("pixel",vecDevices.get(i).pixel);
 			column.setData("name",vecDevices.get(i).name);
-			//System.out.println(vecProject.get(i).getName());
-			column.setImage(new Image(display, ".\\icons\\disconn.png"));
+			column.setImage(new Image(display, ClassLoader.getSystemResource("icons/disconn.png").getPath()));
 		}
 		return root;
 	}

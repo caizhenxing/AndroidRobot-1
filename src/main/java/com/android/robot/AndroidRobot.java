@@ -29,6 +29,7 @@ import com.android.ui.data.UIPool;
 import com.android.uiautomator.AdbDevice;
 import com.android.uiautomator.UiAutomatorClient;
 import com.android.util.*;
+
 import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.jface.text.Document;
 import org.eclipse.jface.text.ITextOperationTarget;
@@ -62,6 +63,7 @@ import org.python.core.PySystemState;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -704,7 +706,8 @@ public class AndroidRobot {
 
         //recorder
         itemRec = new ToolItem(toolBarRecord, SWT.DROP_DOWN);
-        Image iconRec = new Image(display, "./icons/record.png");
+        
+        Image iconRec = new Image(display, ClassLoader.getSystemResource("icons/record.png").getPath());
         itemRec.setImage(iconRec);
         itemRec.setToolTipText("录制");
 
@@ -728,7 +731,7 @@ public class AndroidRobot {
         recMobile.setEnabled(false);
 
         itemStopRecord = new ToolItem(toolBarRecord, SWT.NONE);
-        Image iconStopRecord = new Image(display, "./icons/stoprecord.png");
+        Image iconStopRecord = new Image(display, ClassLoader.getSystemResource("icons/stoprecord.png").getPath());
         itemStopRecord.setImage(iconStopRecord);
         itemStopRecord.setToolTipText("停止录制(F10)");
         itemStopRecord.addListener(SWT.Selection, new Listener() {
@@ -756,7 +759,7 @@ public class AndroidRobot {
 		});
 		*/
         itemTakePhoto = new ToolItem(toolBarRecord, SWT.NONE);
-        Image iconTakePhoto = new Image(display, "./icons/takephoto.png");
+        Image iconTakePhoto = new Image(display, ClassLoader.getSystemResource("icons/takephoto.png").getPath());
         itemTakePhoto.setImage(iconTakePhoto);
         itemTakePhoto.setToolTipText("保存图片(F12)");
         itemTakePhoto.setEnabled(false);
@@ -769,7 +772,7 @@ public class AndroidRobot {
         });
 
         itemBack = new ToolItem(toolBarRecord, SWT.NONE);
-        Image iconBack = new Image(display, "./icons/back.png");
+        Image iconBack = new Image(display, ClassLoader.getSystemResource("icons/back.png").getPath());
         itemBack.setImage(iconBack);
         itemBack.setToolTipText("返回(Back)");
         itemBack.setEnabled(false);
@@ -783,7 +786,7 @@ public class AndroidRobot {
         });
 
         itemMenu = new ToolItem(toolBarRecord, SWT.NONE);
-        Image iconMenu = new Image(display, "./icons/menu.png");
+        Image iconMenu = new Image(display, ClassLoader.getSystemResource("icons/menu.png").getPath());
         itemMenu.setImage(iconMenu);
         itemMenu.setToolTipText("菜单(Menu)");
         itemMenu.setEnabled(false);
@@ -797,7 +800,7 @@ public class AndroidRobot {
         });
 
         itemHome = new ToolItem(toolBarRecord, SWT.NONE);
-        Image iconHome = new Image(display, "./icons/home.png");
+        Image iconHome = new Image(display, ClassLoader.getSystemResource("icons/home.png").getPath());
         itemHome.setImage(iconHome);
         itemHome.setToolTipText("Home");
         itemHome.setEnabled(false);
@@ -812,7 +815,7 @@ public class AndroidRobot {
 
 
         itemInput = new ToolItem(toolBarRecord, SWT.NONE);
-        Image iconInput = new Image(display, "./icons/input.png");
+        Image iconInput = new Image(display, ClassLoader.getSystemResource("icons/input.png").getPath());
         itemInput.setImage(iconInput);
         itemInput.setToolTipText("Input");
         itemInput.setEnabled(false);
@@ -871,12 +874,14 @@ public class AndroidRobot {
 
         //apk
         itemSetApk = new ToolItem(toolBar, SWT.PUSH);
-        Image iconSetAPK = new Image(display, "./icons/apk.png");
+        Image iconSetAPK = new Image(display, ClassLoader.getSystemResource("icons/apk.png").getPath());
         itemSetApk.setImage(iconSetAPK);
         itemSetApk.setToolTipText("设置被测应用");
         itemSetApk.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
                 if (event.detail == 0) {
+
+                	   
                     SetApkWindow newPrj = new SetApkWindow(shell, SWT.CLOSE, PropertiesUtil.getValue("./system.properties", "aut"));
                     String choice = newPrj.open();
 
@@ -888,7 +893,7 @@ public class AndroidRobot {
 
         //new project & script
         itemNew = new ToolItem(toolBar, SWT.DROP_DOWN);
-        Image iconNew = new Image(display, "./icons/new.png");
+        Image iconNew = new Image(display, ClassLoader.getSystemResource("icons/new.png").getPath());
         itemNew.setImage(iconNew);
         itemNew.setToolTipText("新建");
 
@@ -927,7 +932,7 @@ public class AndroidRobot {
 
         //save
         itemSave = new ToolItem(toolBar, SWT.PUSH);
-        Image iconSave = new Image(display, "./icons/save.png");
+        Image iconSave = new Image(display, ClassLoader.getSystemResource("icons/save.png").getPath());
         itemSave.setImage(iconSave);
         itemSave.setToolTipText("保存");
         itemSave.addListener(SWT.Selection, new Listener() {
@@ -942,7 +947,7 @@ public class AndroidRobot {
 
         //run
         itemRun = new ToolItem(toolBar, SWT.DROP_DOWN);
-        Image iconRun = new Image(display, "./icons/run.png");
+        Image iconRun = new Image(display, ClassLoader.getSystemResource("icons/run.png").getPath());
         itemRun.setImage(iconRun);
         itemRun.setToolTipText("运行(F5)");
 
@@ -950,7 +955,7 @@ public class AndroidRobot {
         final Menu menuNorRun = new Menu(shell, SWT.POP_UP);
         MenuItem newNorRun = new MenuItem(menuNorRun, SWT.PUSH);
         newNorRun.setText("并发运行");
-        Image iconRunOrder = new Image(display, "./icons/order.png");
+        Image iconRunOrder = new Image(display, ClassLoader.getSystemResource("icons/order.png").getPath());
         newNorRun.setImage(iconRunOrder);
         newNorRun.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
@@ -962,7 +967,7 @@ public class AndroidRobot {
 
         MenuItem newNorRun2 = new MenuItem(menuNorRun, SWT.PUSH);
         newNorRun2.setText("交互运行");
-        Image iconRunInteract = new Image(display, "./icons/interact.png");
+        Image iconRunInteract = new Image(display, ClassLoader.getSystemResource("icons/interact.png").getPath());
         newNorRun2.setImage(iconRunInteract);
         newNorRun2.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
@@ -992,7 +997,7 @@ public class AndroidRobot {
 
         //Stop
         itemStop = new ToolItem(toolBar, SWT.PUSH);
-        Image iconStop = new Image(display, "./icons/stop.png");
+        Image iconStop = new Image(display, ClassLoader.getSystemResource("icons/stop.png").getPath());
         itemStop.setImage(iconStop);
         itemStop.setToolTipText("停止(F6)");
         itemStop.addListener(SWT.Selection, new Listener() {//disconn
@@ -1004,7 +1009,7 @@ public class AndroidRobot {
         });
         //Take Snapshoot
         itemSaveScreen = new ToolItem(toolBar, SWT.PUSH);
-        Image iconSaveScreen = new Image(display, "./icons/takesnapshoot.png");
+        Image iconSaveScreen = new Image(display, ClassLoader.getSystemResource("icons/takesnapshoot.png").getPath());
         itemSaveScreen.setImage(iconSaveScreen);
         itemSaveScreen.setToolTipText("截取屏幕");
         itemSaveScreen.addListener(SWT.Selection, new Listener() {
@@ -1017,7 +1022,7 @@ public class AndroidRobot {
         //itemSaveScreen.setEnabled(false);
         //delete
         itemDel = new ToolItem(toolBar, SWT.PUSH);
-        Image iconDel = new Image(display, "./icons/delete.png");
+        Image iconDel = new Image(display, ClassLoader.getSystemResource("icons/delete.png").getPath());
         itemDel.setImage(iconDel);
         itemDel.setToolTipText("删除");
         itemDel.addListener(SWT.Selection, new Listener() {
@@ -1029,7 +1034,7 @@ public class AndroidRobot {
         });
 
         itemOpen = new ToolItem(toolBar, SWT.PUSH);
-        Image iconOpen = new Image(display, "./icons/open.png");
+        Image iconOpen = new Image(display, ClassLoader.getSystemResource("icons/open.png").getPath());
         itemOpen.setImage(iconOpen);
         itemOpen.setToolTipText("打开目录");
         itemOpen.addListener(SWT.Selection, new Listener() {
@@ -1052,7 +1057,7 @@ public class AndroidRobot {
         });
 
         itemCheckPoint = new ToolItem(toolBar, SWT.PUSH);
-        Image iconCheckPoint = new Image(display, "./icons/checkpoint.png");
+        Image iconCheckPoint = new Image(display, ClassLoader.getSystemResource("icons/checkpoint.png").getPath());
         itemCheckPoint.setImage(iconCheckPoint);
         itemCheckPoint.setToolTipText("修改比对信息");
 
@@ -1070,7 +1075,7 @@ public class AndroidRobot {
 
         itemImportLog = new ToolItem(toolBar, SWT.PUSH);
         itemImportLog.setEnabled(true);
-        Image iconImportLog = new Image(display, "./icons/log.png");
+        Image iconImportLog = new Image(display, ClassLoader.getSystemResource("icons/log.png").getPath());
         itemImportLog.setImage(iconImportLog);
         itemImportLog.setToolTipText("查看日志");
         itemImportLog.addListener(SWT.Selection, new Listener() {
@@ -1083,7 +1088,7 @@ public class AndroidRobot {
 
         itemDeployment = new ToolItem(toolBar, SWT.PUSH);
         itemDeployment.setEnabled(true);
-        Image iconDeployment = new Image(display, "./icons/deployment.png");
+        Image iconDeployment = new Image(display, ClassLoader.getSystemResource("icons/deployment.png").getPath());
         itemDeployment.setImage(iconDeployment);
         itemDeployment.setToolTipText("部署APK");
         itemDeployment.addListener(SWT.Selection, new Listener() {
@@ -1105,7 +1110,7 @@ public class AndroidRobot {
 
         itemMemInfo = new ToolItem(toolBar, SWT.PUSH);
         itemMemInfo.setEnabled(true);
-        Image iconMemInfo = new Image(display, "./icons/meminfo.png");
+        Image iconMemInfo = new Image(display, ClassLoader.getSystemResource("icons/meminfo.png").getPath());
         itemMemInfo.setImage(iconMemInfo);
         itemMemInfo.setToolTipText("监控内存PSS");
         itemMemInfo.addListener(SWT.Selection, new Listener() {
@@ -1119,7 +1124,7 @@ public class AndroidRobot {
 
         itemFPSInfo = new ToolItem(toolBar, SWT.PUSH);
         itemFPSInfo.setEnabled(true);
-        Image iconFPSInfo = new Image(display, "./icons/fps.png");
+        Image iconFPSInfo = new Image(display, ClassLoader.getSystemResource("icons/fps.png").getPath());
         itemFPSInfo.setImage(iconFPSInfo);
         itemFPSInfo.setToolTipText("监控FPS");
         itemFPSInfo.addListener(SWT.Selection, new Listener() {
@@ -1133,7 +1138,7 @@ public class AndroidRobot {
 
         itemCPUInfo = new ToolItem(toolBar, SWT.PUSH);
         itemCPUInfo.setEnabled(true);
-        Image iconCPUInfo = new Image(display, "./icons/cpu.png");
+        Image iconCPUInfo = new Image(display, ClassLoader.getSystemResource("icons/cpu.png").getPath());
         itemCPUInfo.setImage(iconCPUInfo);
         itemCPUInfo.setToolTipText("监控CPU信息");
         itemCPUInfo.addListener(SWT.Selection, new Listener() {
@@ -1147,7 +1152,7 @@ public class AndroidRobot {
 
         itemMonkeyTest = new ToolItem(toolBar, SWT.PUSH);
         itemMonkeyTest.setEnabled(true);
-        Image iconMonkeyTest = new Image(display, "./icons/monkey.png");
+        Image iconMonkeyTest = new Image(display, ClassLoader.getSystemResource("icons/monkey.png").getPath());
         itemMonkeyTest.setImage(iconMonkeyTest);
         itemMonkeyTest.setToolTipText("Monkey Test");
         itemMonkeyTest.addListener(SWT.Selection, new Listener() {
@@ -1161,7 +1166,7 @@ public class AndroidRobot {
 
         itemLogcat = new ToolItem(toolBar, SWT.PUSH);
         itemLogcat.setEnabled(true);
-        Image iconLogcat = new Image(display, "./icons/logcat.png");
+        Image iconLogcat = new Image(display, ClassLoader.getSystemResource("icons/logcat.png").getPath());
         itemLogcat.setImage(iconLogcat);
         itemLogcat.setToolTipText("ADB LogCat");
         itemLogcat.addListener(SWT.Selection, new Listener() {
@@ -1172,19 +1177,19 @@ public class AndroidRobot {
             }
         });
 
-        itemNodesView = new ToolItem(toolBar, SWT.PUSH);
-        itemNodesView.setEnabled(true);
-        Image iconNodesView = new Image(display, "./icons/nodesview.png");
-        itemNodesView.setImage(iconNodesView);
-        itemNodesView.setToolTipText("Nodes View");
-        itemNodesView.addListener(SWT.Selection, new Listener() {
-            public void handleEvent(Event event) {
-                if (event.detail == 0) {
-                    NodeViewer nodeViewer = new NodeViewer(shell, SWT.CLOSE, findDevices.getDevices());
-                    nodeViewer.open();
-                }
-            }
-        });
+//        itemNodesView = new ToolItem(toolBar, SWT.PUSH);
+//        itemNodesView.setEnabled(true);
+//        Image iconNodesView = new Image(display, "./icons/nodesview.png");
+//        itemNodesView.setImage(iconNodesView);
+//        itemNodesView.setToolTipText("Nodes View");
+//        itemNodesView.addListener(SWT.Selection, new Listener() {
+//            public void handleEvent(Event event) {
+//                if (event.detail == 0) {
+//                    NodeViewer nodeViewer = new NodeViewer(shell, SWT.CLOSE, findDevices.getDevices());
+//                    nodeViewer.open();
+//                }
+//            }
+//        });
 
     }
 
@@ -1359,7 +1364,7 @@ public class AndroidRobot {
             FileUtility.readFileByLines(path, text_1);
         else if (script == DisplayUtil.Script.Read)
             FileUtility.readFileByLines(path, text_1);
-        tabItem.setImage(new Image(display, ".\\icons\\script.png"));
+        tabItem.setImage(new Image(display, ClassLoader.getSystemResource("icons/script.png").getPath()));
 
         text_1.addListener(SWT.Modify, new Listener() {
             public void handleEvent(Event event) {
@@ -1709,7 +1714,7 @@ public class AndroidRobot {
                         new Shell(shell, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
 
                 dialog.setText("About Android Robot");
-                dialog.setImage(SWTResourceManager.getImage(".\\icons\\title.png"));
+                dialog.setImage(SWTResourceManager.getImage(ClassLoader.getSystemResource("icons/title.png").getPath()));
                 dialog.setLayout(new RowLayout());
                 Text textHelp = new Text(dialog,
                         SWT.BORDER | SWT.MULTI);
@@ -1738,7 +1743,7 @@ public class AndroidRobot {
                 final Shell dialog =
                         new Shell(shell, SWT.DIALOG_TRIM | SWT.APPLICATION_MODAL);
                 dialog.setText("关于我们");
-                dialog.setImage(SWTResourceManager.getImage(".\\icons\\title.png"));
+                dialog.setImage(SWTResourceManager.getImage(ClassLoader.getSystemResource("icons/title.png").getPath()));
                 dialog.setLayout(new RowLayout());
                 Text textHelp = new Text(dialog,
                         SWT.BORDER | SWT.MULTI);
@@ -1926,7 +1931,7 @@ public class AndroidRobot {
         CTabItem tabItemLog = new CTabItem(tabLogFolder, SWT.NONE);
         tabItemLog.setText(name);
 
-        tabItemLog.setImage(new Image(display, ".\\icons\\log.png"));
+        tabItemLog.setImage(new Image(display, ClassLoader.getSystemResource("icons/log.png").getPath()));
         //add contorl
         listViewerLog = new ListViewer(tabLogFolder, SWT.BORDER | SWT.MULTI | SWT.V_SCROLL | SWT.H_SCROLL);
         tabItemLog.setControl(listViewerLog.getList());
@@ -2021,7 +2026,7 @@ public class AndroidRobot {
 
     private static void addMachineTab(final String name) {
         final CTabItem tabItem = new CTabItem(tabHandsetName, SWT.MULTI | SWT.V_SCROLL);
-        tabItem.setImage(new Image(display, ".\\icons\\device.png"));
+        tabItem.setImage(new Image(display, ClassLoader.getSystemResource("icons/device.png").getPath()));
         tabItem.setText(name);
 
         listHandsets = new List(tabHandsetName, SWT.BORDER);
@@ -2082,7 +2087,7 @@ public class AndroidRobot {
     private static void addEmulator() {
         final CTabItem tabItemEmulator = new CTabItem(tabProgress, SWT.V_SCROLL | SWT.H_SCROLL);
         tabItemEmulator.setText("手机视图");
-        tabItemEmulator.setImage(new Image(display, ".\\icons\\view.png"));
+        tabItemEmulator.setImage(new Image(display, ClassLoader.getSystemResource("icons/view.png").getPath()));
 
         addDisplay(tabItemEmulator);
         //show it
@@ -3354,7 +3359,7 @@ public class AndroidRobot {
         tabItemTasks = new CTabItem(tabFolder, SWT.TOP | SWT.MULTI | SWT.V_SCROLL);
         tabItemTasks.setText("任务管理");
         //tabItem.setFont(new Font(display,"宋体",10,SWT.NONE));
-        tabItemTasks.setImage(new Image(display, ".\\icons\\config.png"));
+        tabItemTasks.setImage(new Image(display, ClassLoader.getSystemResource("icons/config.png").getPath()));
 
         // create the composite for ToolBar
         final Composite toolComp = new Composite(tabFolder, SWT.NONE);
@@ -3370,7 +3375,7 @@ public class AndroidRobot {
         toolBar.setLayoutData(suGridData);
         //new task
         ToolItem newTaskToolItem = new ToolItem(toolBar, SWT.PUSH);
-        newTaskToolItem.setImage(new Image(display, ".\\icons\\newTask.png"));//
+        newTaskToolItem.setImage(new Image(display, ClassLoader.getSystemResource("icons/newTask.png").getPath()));//
         newTaskToolItem.setToolTipText("新建任务");
         newTaskToolItem.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
@@ -3382,7 +3387,7 @@ public class AndroidRobot {
 
         //remove task
         ToolItem removeToolItem = new ToolItem(toolBar, SWT.PUSH);
-        removeToolItem.setImage(new Image(display, ".\\icons\\removeTask.png"));//
+        removeToolItem.setImage(new Image(display, ClassLoader.getSystemResource("icons/removeTask.png").getPath()));//
         removeToolItem.setToolTipText("移除任务");
         removeToolItem.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
@@ -3407,7 +3412,7 @@ public class AndroidRobot {
 
         //up
         ToolItem upToolItem = new ToolItem(toolBar, SWT.PUSH);
-        upToolItem.setImage(new Image(display, ".\\icons\\up.png"));//
+        upToolItem.setImage(new Image(display, ClassLoader.getSystemResource("icons/up.png").getPath()));//
         upToolItem.setToolTipText("向上移动");
         upToolItem.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
@@ -3437,7 +3442,7 @@ public class AndroidRobot {
 
         //down
         ToolItem downToolItem = new ToolItem(toolBar, SWT.PUSH);
-        downToolItem.setImage(new Image(display, ".\\icons\\down.png"));//
+        downToolItem.setImage(new Image(display, ClassLoader.getSystemResource("icons/down.png").getPath()));//
         downToolItem.setToolTipText("向下移动");
         downToolItem.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
@@ -3468,7 +3473,7 @@ public class AndroidRobot {
 
         //save
         ToolItem saveToolItem = new ToolItem(toolBar, SWT.PUSH);
-        saveToolItem.setImage(new Image(display, ".\\icons\\save_task.png"));//
+        saveToolItem.setImage(new Image(display, ClassLoader.getSystemResource("icons/save_task.png").getPath()));//
         saveToolItem.setToolTipText("保存");
         saveToolItem.addListener(SWT.Selection, new Listener() {
             public void handleEvent(Event event) {
@@ -3792,7 +3797,8 @@ public class AndroidRobot {
                 projectPath = new File(prjName.substring(0, prjName.lastIndexOf(".androidrobot"))).getCanonicalPath();
 
                 //set path for checkpoint system
-                PropertiesUtil.append("./system.properties", "ProjectPath", prjName, "");
+                PropertiesUtil.append(System.getProperty("user.dir") + 
+                		File.separator + "system.properties", "ProjectPath", prjName, "");
 
                 FileUtility.loadLogsByProject(root, display, projectPath);
                 FileUtility.loadPicturesByProject(root, display, projectPath);
@@ -3854,7 +3860,7 @@ public class AndroidRobot {
         CTabItem item = new CTabItem(tabFolder, SWT.NONE | SWT.MULTI | SWT.V_SCROLL);
         tabFolder.setSelection(item);
         item.setText("项目浏览");
-        item.setImage(new Image(display, ".\\icons\\workspace.png"));
+        item.setImage(new Image(display, ClassLoader.getSystemResource("icons/workspace.png").getPath()));
         composite = new Composite(tabFolder, SWT.NONE);
         composite.setLayout(new GridLayout());
         tree = new Tree(composite, SWT.BORDER);//SWT.CHECK |
@@ -4216,7 +4222,7 @@ public class AndroidRobot {
                     if (name.equals(brand) &&
                             (sn != null && device.getSerialNumber().contains(sn))) {
                         if (!composite.getParent().isDisposed()) {
-                            devices.getItem(j).setImage(new Image(display, ".\\icons\\devices.png"));
+                            devices.getItem(j).setImage(new Image(display, ClassLoader.getSystemResource("icons/devices.png").getPath()));
                             devices.getItem(j).setData("device", device);
                         }
                     }
@@ -4235,7 +4241,7 @@ public class AndroidRobot {
                     String name = devices.getItem(j).getText();
                     if (name.equals(brand) &&
                             (sn != null && device.getSerialNumber().contains(sn))) {
-                        devices.getItem(j).setImage(new Image(display, ".\\icons\\disconn.png"));
+                        devices.getItem(j).setImage(new Image(display, ClassLoader.getSystemResource("icons/disconn.png").getPath()));
                     }
                 }
             }
@@ -4252,7 +4258,7 @@ public class AndroidRobot {
                         if (!composite.getParent().isDisposed() &&
                                 null != devices.getItem(j) &&
                                 null != devices.getItem(j).getData("device")) {
-                            devices.getItem(j).setImage(new Image(display, ".\\icons\\disconn.png"));
+                            devices.getItem(j).setImage(new Image(display, ClassLoader.getSystemResource("icons/disconn.png").getPath()));
                             devices.getItem(j).setData("device", null);
                         }
 //        				}else{
@@ -5109,17 +5115,16 @@ public class AndroidRobot {
      */
     public static void main(String[] args) {
         //Loading Splash windows from start
-        SplashWindow sp = new SplashWindow("splash.jpg");
+        SplashWindow sp = new SplashWindow(System.getProperty("user.dir") + 
+        		File.separator + "splash.jpg");
         sp.start();
 
         display = new Display();
         shell = new Shell(display);
-        shell.setImage(SWTResourceManager.getImage(".\\icons\\title.png"));
+        shell.setImage(SWTResourceManager.getImage(ClassLoader.getSystemResource("icons/title.png").getPath()));
 
         String title = "AndroidRobot -- Spider 3.0";
         shell.setText(title);
-
-        ServerUtil.loadServerParams();
 
         /**
          * shutcut key for main frame

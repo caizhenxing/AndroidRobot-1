@@ -2,6 +2,7 @@ package com.android.util;
 
 import java.util.Hashtable;
 import java.util.Vector;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.widgets.Display;
@@ -59,7 +60,7 @@ public class RobotTreeUtil {
 		for(int j=0;j<tiDevices.getItemCount();j++){
 			for(int i=0;i<devices.length;i++){
 				if(tiDevices.getItem(j).getData("sn").equals(devices[i].getSerialNumber())){
-					tiDevices.getItem(j).setImage(new Image(display, ".\\icons\\devices.png"));
+					tiDevices.getItem(j).setImage(new Image(display, ClassLoader.getSystemResource("icons/devices.png").getPath()));
 					tiDevices.getItem(j).setData("device",devices[i]);
 					break;
 				}
@@ -119,7 +120,7 @@ public class RobotTreeUtil {
 		if(parent != null){
 			column = new TreeItem(parent, SWT.NONE);
 			column.setText(name);
-			column.setImage(new Image(display, ".\\icons\\project.png"));
+			column.setImage(new Image(display, ClassLoader.getSystemResource("icons/project.png").getPath()));
 		}
 		return column;
 	}
@@ -130,13 +131,13 @@ public class RobotTreeUtil {
 			column = new TreeItem(parent, SWT.NONE);
 			column.setText(name);
 			if(name.endsWith(".dat"))
-				column.setImage(new Image(display, ".\\icons\\unknow.png"));
+				column.setImage(new Image(display, ClassLoader.getSystemResource("icons/unknow.png").getPath()));
 			else if(name.endsWith("Devices"))
-				column.setImage(new Image(display, ".\\icons\\devices.png"));
+				column.setImage(new Image(display, ClassLoader.getSystemResource("icons/devices.png").getPath()));
 			else if(parent.getText().equals("Devices")){
-				column.setImage(new Image(display, ".\\icons\\devices.png"));
+				column.setImage(new Image(display, ClassLoader.getSystemResource("icons/devices.png").getPath()));
 			}else
-				column.setImage(new Image(display, ".\\icons\\folder.png"));
+				column.setImage(new Image(display, ClassLoader.getSystemResource("icons/folder.png").getPath()));
 		}
 		return column;
 	}
@@ -146,7 +147,7 @@ public class RobotTreeUtil {
 		if(parent != null){
 			column = new TreeItem(parent, SWT.NONE);
 			column.setText(name);
-			column.setImage(new Image(display, ".\\icons\\devices.png"));
+			column.setImage(new Image(display, ClassLoader.getSystemResource("icons/devices.png").getPath()));
 			
 			column.setData("device",tempDevice);
 			column.setData("index",parent.getItems().length-1);

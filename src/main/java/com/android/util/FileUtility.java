@@ -146,9 +146,9 @@ public class FileUtility {
 			TreeItem folder = new TreeItem(root, SWT.NONE);
 			folder.setText(f.getName());
 			if(f.getName().trim().equals("Library")){
-				folder.setImage(new Image(display, ".\\icons\\library.png"));
+				folder.setImage(new Image(display, ClassLoader.getSystemResource("icons/library.png").getPath()));
 			}else{
-				folder.setImage(new Image(display, ".\\icons\\folder.png"));
+				folder.setImage(new Image(display, ClassLoader.getSystemResource("icons/folder.png").getPath()));
 			}
 			File[] t = f.listFiles();
 			for (int i = 0; i < t.length; i++){
@@ -159,13 +159,13 @@ public class FileUtility {
 			TreeItem folder = new TreeItem(root, SWT.NONE);
 			folder.setText(f.getName());
 			if(f.getName().endsWith(".py"))
-				folder.setImage(new Image(display, ".\\icons\\script.png"));
+				folder.setImage(new Image(display, ClassLoader.getSystemResource("icons/script.png").getPath()));
 			else if(f.getName().endsWith(".png"))
-				folder.setImage(new Image(display, ".\\icons\\picture.png"));
+				folder.setImage(new Image(display, ClassLoader.getSystemResource("icons/picture.png").getPath()));
 			else if(f.getName().endsWith(".arlog"))
-				folder.setImage(new Image(display, ".\\icons\\log.png"));
+				folder.setImage(new Image(display, ClassLoader.getSystemResource("icons/log.png").getPath()));
 			else
-				folder.setImage(new Image(display, ".\\icons\\unknow.png"));
+				folder.setImage(new Image(display, ClassLoader.getSystemResource("icons/unkown.png").getPath()));
 		}
 	}
 	
